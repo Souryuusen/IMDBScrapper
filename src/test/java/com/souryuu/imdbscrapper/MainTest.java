@@ -1,2 +1,4 @@
-package com.souryuu.imdbscrapper;public class MainTest {
+package com.souryuu.imdbscrapper;
+
+public class MainTest {
 }
