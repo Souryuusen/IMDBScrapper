@@ -130,7 +130,7 @@ public class MovieDataExtractor implements Extractable {
      */
     private Optional<String> retrieveProductionCoverURL(Document document) {
         final String MAIN_PAGE_COVER_ELEMENT_XPATH = "//*[@id=\"__next\"]/main/div/section[1]/section/div[3]/section/section/div[3]/div[1]/div[1]/div/a";
-        final String COVER_ELEMENT_XPATH = "//*[@id=\"__next\"]/main/div[2]/div[3]/div[4]/img";
+        final String COVER_ELEMENT_XPATH = "//*[@id=\"__next\"]/main/div[2]/div[3]/div/img";
 
         Optional<String> optionalCoverURL = Optional.empty();
 
@@ -140,8 +140,15 @@ public class MovieDataExtractor implements Extractable {
         Optional<Document> coverDocumentOptional = PageContentRetriever.retrievePageContent(coverURL);
         if(coverDocumentOptional.isPresent()) {
             Document coverDocument = coverDocumentOptional.get();
-            coverElement = coverDocument.selectXpath(COVER_ELEMENT_XPATH).first();
+            Elements coverElements = coverDocument.selectXpath(COVER_ELEMENT_XPATH);
+            for(Element e : coverElements) {
+                if(e.attr("data-image-id").endsWith("-curr")) {
+                    coverElement = e;
+                    break;
+                }
+            }
             String retrievedURL = coverElement.attr("src");
+            System.out.println(retrievedURL);
             optionalCoverURL = Optional.of(retrievedURL);
         }
         return optionalCoverURL;
@@ -195,14 +202,28 @@ public class MovieDataExtractor implements Extractable {
             productionDetailMap.put(ProductionDetailKeys.RELEASE_DATE, formatToCamelCase(productionDate));
         }
         // Production Country Of Origin Selection
-        Element countryOfOriginElement = document.select(COUNTY_OF_ORIGIN_SELECTOR).first();
-        if(countryOfOriginElement != null) {
-            productionDetailMap.put(ProductionDetailKeys.COUNTRY_OF_ORIGIN, formatToCamelCase(countryOfOriginElement.ownText()));
+        Elements countryOfOriginElements = document.select(COUNTY_OF_ORIGIN_SELECTOR);
+        if(countryOfOriginElements != null) {
+            String countries = "";
+            for(Element e : countryOfOriginElements) {
+                if(!countries.equalsIgnoreCase("")) {
+                    countries += ", ";
+                }
+                countries += formatToCamelCase(e.ownText());
+            }
+            productionDetailMap.put(ProductionDetailKeys.COUNTRY_OF_ORIGIN, countries);
         }
         // Production Language Selection
-        Element languageElement = document.select(LANGUAGE_SELECTOR).first();
-        if(languageElement != null) {
-            productionDetailMap.put(ProductionDetailKeys.LANGUAGE, formatToCamelCase(languageElement.ownText()));
+        Elements languageElements = document.select(LANGUAGE_SELECTOR);
+        if(languageElements != null) {
+            String langs = "";
+            for(Element e : languageElements) {
+                if(!langs.equalsIgnoreCase("")) {
+                    langs += ", ";
+                }
+                langs += formatToCamelCase(e.ownText());
+            }
+            productionDetailMap.put(ProductionDetailKeys.LANGUAGE, langs);
         }
         resultOptional = Optional.of(productionDetailMap);
         return resultOptional;

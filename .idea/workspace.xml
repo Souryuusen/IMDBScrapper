@@ -4,22 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5ae0bb2-660c-45e2-837d-a860dcf53029" name="Changes" comment="2023-04-07&#10;- Added H2 Database Driver + Hibernate framework&#10;! Most of code is just for test whenever the project is configured properly - it will get cleaned up in next commit.">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/souryuu/imdbscrapper/MovieDataExtractor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/souryuu/imdbscrapper/PageContentRetriever.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/souryuu/imdbscrapper/entity/MovieData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/souryuu/imdbscrapper/entity/Person.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/souryuu/imdbscrapper/entity/ProductionDetailKeys.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/souryuu/imdbscrapper/exceptions/NoDocumentPresentException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/souryuu/imdbscrapper/interfaces/Extractable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/souryuu/imdbscrapper/interfaces/ProductionData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+    <list default="true" id="e5ae0bb2-660c-45e2-837d-a860dcf53029" name="Changes" comment="2023-04-08&#10;- Created Scrapping Methods For IMDB Movies along with classes that are required to store data.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/souryuu/imdbscrapper/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/souryuu/imdbscrapper/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/souryuu/imdbscrapper/TVSerie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/souryuu/imdbscrapper/entity/TVSerie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/souryuu/imdbscrapper/MovieDataExtractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/souryuu/imdbscrapper/MovieDataExtractor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +77,7 @@
       <option name="presentableId" value="Default" />
       <updated>1680849722359</updated>
       <workItem from="1680883292809" duration="6950000" />
-      <workItem from="1680949889007" duration="16822000" />
+      <workItem from="1680949889007" duration="19647000" />
     </task>
     <task id="LOCAL-00001" summary="2023-04-07&#10;- Added H2 Database Driver + Hibernate framework&#10;! Most of code is just for test whenever the project is configured properly - it will get cleaned up in next commit.">
       <created>1680891044617</created>
@@ -98,7 +86,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680891044617</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="2023-04-08&#10;- Created Scrapping Methods For IMDB Movies along with classes that are required to store data.">
+      <created>1680979576262</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1680979576262</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -117,6 +112,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="2023-04-07&#10;- Added H2 Database Driver + Hibernate framework&#10;! Most of code is just for test whenever the project is configured properly - it will get cleaned up in next commit." />
-    <option name="LAST_COMMIT_MESSAGE" value="2023-04-07&#10;- Added H2 Database Driver + Hibernate framework&#10;! Most of code is just for test whenever the project is configured properly - it will get cleaned up in next commit." />
+    <MESSAGE value="2023-04-08&#10;- Created Scrapping Methods For IMDB Movies along with classes that are required to store data." />
+    <option name="LAST_COMMIT_MESSAGE" value="2023-04-08&#10;- Created Scrapping Methods For IMDB Movies along with classes that are required to store data." />
   </component>
 </project>
