@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5ae0bb2-660c-45e2-837d-a860dcf53029" name="Changes" comment="2023-04-08&#10;- Created Scrapping Methods For IMDB Movies along with classes that are required to store data.">
+    <list default="true" id="e5ae0bb2-660c-45e2-837d-a860dcf53029" name="Changes" comment="2023-04-08&#10;- Bug fix: with retrieval of languages, countries of origin retrieved only one position instead of all&#10;- Bug fix: In some cases the main cover was replaced with preview screenshot">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/souryuu/imdbscrapper/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/souryuu/imdbscrapper/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/souryuu/imdbscrapper/MovieDataExtractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/souryuu/imdbscrapper/MovieDataExtractor.java" afterDir="false" />
@@ -77,7 +77,7 @@
       <option name="presentableId" value="Default" />
       <updated>1680849722359</updated>
       <workItem from="1680883292809" duration="6950000" />
-      <workItem from="1680949889007" duration="19647000" />
+      <workItem from="1680949889007" duration="23270000" />
     </task>
     <task id="LOCAL-00001" summary="2023-04-07&#10;- Added H2 Database Driver + Hibernate framework&#10;! Most of code is just for test whenever the project is configured properly - it will get cleaned up in next commit.">
       <created>1680891044617</created>
@@ -93,7 +93,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680979576262</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="2023-04-08&#10;- Bug fix: with retrieval of languages, countries of origin retrieved only one position instead of all&#10;- Bug fix: In some cases the main cover was replaced with preview screenshot">
+      <created>1680983503759</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1680983503759</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -113,6 +120,14 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="2023-04-07&#10;- Added H2 Database Driver + Hibernate framework&#10;! Most of code is just for test whenever the project is configured properly - it will get cleaned up in next commit." />
     <MESSAGE value="2023-04-08&#10;- Created Scrapping Methods For IMDB Movies along with classes that are required to store data." />
-    <option name="LAST_COMMIT_MESSAGE" value="2023-04-08&#10;- Created Scrapping Methods For IMDB Movies along with classes that are required to store data." />
+    <MESSAGE value="2023-04-08&#10;- Bug fix: with retrieval of languages, countries of origin retrieved only one position instead of all&#10;- Bug fix: In some cases the main cover was replaced with preview screenshot" />
+    <option name="LAST_COMMIT_MESSAGE" value="2023-04-08&#10;- Bug fix: with retrieval of languages, countries of origin retrieved only one position instead of all&#10;- Bug fix: In some cases the main cover was replaced with preview screenshot" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="elements" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

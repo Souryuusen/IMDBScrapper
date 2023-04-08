@@ -112,13 +112,15 @@ public class MovieDataExtractor implements Extractable {
      * @return List genres mentioned on genre scroller part of IMDB HTML page content
      */
     private Set<String> retrieveGenres(Document document) {
-        final String GENRES_ELEMENT_XPATH = "//*[@id=\"__next\"]/main/div/section[1]/section/div[3]/section/section/div[3]/div[2]/div[1]/section/div[1]/div[2]/a/span";
-
         Set<String> genresSet = new HashSet<>();
-        Elements elements = document.selectXpath(GENRES_ELEMENT_XPATH);
-        for(Element e : elements) {
-            // TODO: Extend Genres Data with additional info (perhaps a class Genre?)
-            genresSet.add(e.ownText());
+        String s = document.toString().substring(document.toString().indexOf("<script id=\"__NEXT_DATA__\" type=\"application/json\">{\"props\":{\"pageProps\":{"));
+        s = s.substring(s.indexOf("},\"genres\":"), s.indexOf("\"plot\""));
+        for(String s1 : s.split(",")) {
+            if(s1.contains("\"id\":")) {
+                String tmp = s1.substring(s1.indexOf("\":\"")+3, s1.lastIndexOf("\""));
+                System.out.println(tmp);
+                genresSet.add(tmp);
+            }
         }
         return genresSet;
     }

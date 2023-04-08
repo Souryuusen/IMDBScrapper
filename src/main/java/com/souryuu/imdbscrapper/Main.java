@@ -56,7 +56,7 @@ public class Main {
 //                directorList.add(directors.substring(0, directors.indexOf("</a></li>")));
 //            }
 //
-//            IMDBScrapper scrapper = new IMDBScrapper("https://www.imdb.com/title/tt0050201/?ref_=nv_sr_srsg_3_tt_8_nm_0_q_dracula?65465?352363426?safadgf");
+//            IMDBScrapper scrapper = new IMDBScrapper("https://www.imdb.com/title/tt3915174/");
 //            scrapper.printContent();
 //
 //            Elements elements = scrapper.getHtmlContent().selectXpath("//*[@id=\"keywords_content\"]/table/tbody/tr/td[1]/div[1]/a | //*[@id=\"keywords_content\"]/table/tbody/tr/td[2]/div[1]/a");
@@ -122,12 +122,12 @@ public class Main {
 //
 //        //terminate session factory, otherwise program won't end
 //        factory.close();
-//        File input = new File("C:\\Users\\grzeg\\OneDrive\\Dokumenty\\scrapper_test\\" + "test_set" + ".txt");
-//        Scanner sc = new Scanner(input);
-//        while(sc.hasNext()) {
-//            String url = sc.nextLine();
-//            MovieDataExtractor mde = new MovieDataExtractor(url);
-            MovieDataExtractor mde = new MovieDataExtractor("https://www.imdb.com/title/tt10365998/");
+        File input = new File("C:\\Users\\grzeg\\OneDrive\\Dokumenty\\scrapper_test\\" + "test_set" + ".txt");
+        Scanner sc = new Scanner(input);
+        while(sc.hasNext()) {
+            String url = sc.nextLine();
+            MovieDataExtractor mde = new MovieDataExtractor(url);
+//            MovieDataExtractor mde = new MovieDataExtractor("https://www.imdb.com/title/tt3915174/");
             mde.extract();
 
             ObjectMapper mapper = new ObjectMapper();
@@ -139,7 +139,7 @@ public class Main {
             URL coverUrl = new URL(data.getCoverURL());
             BufferedImage image = ImageIO.read(coverUrl);
             ImageIO.write(image, "jpg", new File("C:\\Users\\grzeg\\OneDrive\\Dokumenty\\scrapper_test\\" + data.getTitle().replaceAll("\\W+", "") + ".jpeg"));
-//        }
+        }
     }
 
     private static void hibernateTest() {
