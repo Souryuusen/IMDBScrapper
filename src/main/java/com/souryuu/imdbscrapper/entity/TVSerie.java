@@ -1,4 +1,4 @@
-package com.souryuu.imdbscrapper;
+package com.souryuu.imdbscrapper.entity;
 
 import jakarta.persistence.*;
 
