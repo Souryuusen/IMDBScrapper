@@ -5,7 +5,7 @@
     <session-factory>
         <!-- JDBC Database connection settings -->
         <property name="connection.driver_class">org.h2.Driver</property>
-        <property name="connection.url">jdbc:h2:C:/Users/grzeg/OneDrive/Dokumenty/testdb</property>
+        <property name="connection.url">jdbc:h2:C:/Users/grzeg/OneDrive/Dokumenty/testdb.mv.db</property>
         <property name="connection.username">sa</property>
         <property name="connection.password"></property>
         <!-- JDBC connection pool settings ... using built-in test pool -->

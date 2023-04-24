@@ -27,7 +27,7 @@ import java.util.Scanner;
 
 public class Main {
     private static SessionFactory factory;
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
 //        StringBuilder sb = new StringBuilder();
 //
 //        try {
@@ -123,22 +123,39 @@ public class Main {
 //        //terminate session factory, otherwise program won't end
 //        factory.close();
         File input = new File("C:\\Users\\grzeg\\OneDrive\\Dokumenty\\scrapper_test\\" + "test_set" + ".txt");
-        Scanner sc = new Scanner(input);
-        while(sc.hasNext()) {
-            String url = sc.nextLine();
-            MovieDataExtractor mde = new MovieDataExtractor(url);
-//            MovieDataExtractor mde = new MovieDataExtractor("https://www.imdb.com/title/tt3915174/");
-            mde.extract();
+//        Scanner sc = new Scanner(input);
+//        while(sc.hasNext()) {
+//            String url = sc.nextLine();
+//            MovieDataExtractor mde = new MovieDataExtractor(url);
+////            MovieDataExtractor mde = new MovieDataExtractor("https://www.imdb.com/title/tt3915174/");
+//            mde.extract();
+//
+//            ObjectMapper mapper = new ObjectMapper();
+//            mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
+//            mapper.enable(SerializationFeature.INDENT_OUTPUT);
+//            MovieData data = mde.getRetrievedData();
+//            mapper.writeValue(new File("C:\\Users\\grzeg\\OneDrive\\Dokumenty\\scrapper_test\\" + data.getTitle().replaceAll("\\W+", "") + ".json"), data);
+//            String path = "C:\\image.jpg";
+//            URL coverUrl = new URL(data.getCoverURL());
+//            BufferedImage image = ImageIO.read(coverUrl);
+//            ImageIO.write(image, "jpg", new File("C:\\Users\\grzeg\\OneDrive\\Dokumenty\\scrapper_test\\" + data.getTitle().replaceAll("\\W+", "") + ".jpeg"));
+//        }
 
-            ObjectMapper mapper = new ObjectMapper();
-            mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
-            mapper.enable(SerializationFeature.INDENT_OUTPUT);
-            MovieData data = mde.getRetrievedData();
-            mapper.writeValue(new File("C:\\Users\\grzeg\\OneDrive\\Dokumenty\\scrapper_test\\" + data.getTitle().replaceAll("\\W+", "") + ".json"), data);
+        IMDBScrapper scrapper = new IMDBScrapper(input);
+        scrapper.multithreadedScrape(5);
+        while(!scrapper.isProcessingDone()) Thread.sleep(500);
+
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
+        mapper.enable(SerializationFeature.INDENT_OUTPUT);
+
+        for(MovieData d : scrapper.getScrapedData()) {
+            String filepath = "C:\\Users\\grzeg\\OneDrive\\Dokumenty\\scrapper_test\\" + d.getTitle().replaceAll("\\W+", "");
+            mapper.writeValue(new File(filepath + ".json"), d);
             String path = "C:\\image.jpg";
-            URL coverUrl = new URL(data.getCoverURL());
+            URL coverUrl = new URL(d.getCoverURL());
             BufferedImage image = ImageIO.read(coverUrl);
-            ImageIO.write(image, "jpg", new File("C:\\Users\\grzeg\\OneDrive\\Dokumenty\\scrapper_test\\" + data.getTitle().replaceAll("\\W+", "") + ".jpeg"));
+            ImageIO.write(image, "jpg", new File(filepath + ".jpeg"));
         }
     }
 

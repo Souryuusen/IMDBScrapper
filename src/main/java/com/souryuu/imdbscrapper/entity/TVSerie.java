@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class TVSerie {
     @Id
     @GeneratedValue
-    private long serieID;
+    private long seriesID;
     @Column(name = "TITLE") private String title;
     @Column(name = "IMDB_LINK") String imdbLink;
     @Column(name = "REVIEW") String review;
@@ -15,8 +15,8 @@ public class TVSerie {
     @Column(name = "RATING") int rating;
     @Column(name = "SEASON_COUNT") int seasonCount;
 
-    public long getSerieID() {
-        return this.serieID;
+    public long getSeriesID() {
+        return this.seriesID;
     }
 
     public String getTitle() {

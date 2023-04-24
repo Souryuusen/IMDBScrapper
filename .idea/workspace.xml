@@ -4,10 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5ae0bb2-660c-45e2-837d-a860dcf53029" name="Changes" comment="2023-04-08&#10;- Bug fix: with retrieval of languages, countries of origin retrieved only one position instead of all&#10;- Bug fix: In some cases the main cover was replaced with preview screenshot">
+    <list default="true" id="e5ae0bb2-660c-45e2-837d-a860dcf53029" name="Changes" comment="2023-04-08&#10;- Bug fix: Scrapper not retriving all genres fields from site -&gt; change JSoup Element scrapping to plain html parsing.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/souryuu/imdbscrapper/ScrappingTask.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/souryuu/imdbscrapper/IMDBScrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/souryuu/imdbscrapper/IMDBScrapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/souryuu/imdbscrapper/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/souryuu/imdbscrapper/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/souryuu/imdbscrapper/MovieDataExtractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/souryuu/imdbscrapper/MovieDataExtractor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/souryuu/imdbscrapper/entity/MovieData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/souryuu/imdbscrapper/entity/MovieData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/souryuu/imdbscrapper/entity/TVSerie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/souryuu/imdbscrapper/entity/TVSerie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +23,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -42,24 +47,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.49770114&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "h2"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;h2&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.souryuu.imdbscrapper" />
@@ -77,7 +85,17 @@
       <option name="presentableId" value="Default" />
       <updated>1680849722359</updated>
       <workItem from="1680883292809" duration="6950000" />
-      <workItem from="1680949889007" duration="23270000" />
+      <workItem from="1680949889007" duration="23339000" />
+      <workItem from="1681035584110" duration="11164000" />
+      <workItem from="1681540681456" duration="772000" />
+      <workItem from="1681547577875" duration="4000" />
+      <workItem from="1681646697388" duration="996000" />
+      <workItem from="1681669126517" duration="116000" />
+      <workItem from="1681748519419" duration="606000" />
+      <workItem from="1681918010801" duration="36000" />
+      <workItem from="1682257379228" duration="1220000" />
+      <workItem from="1682258847927" duration="605000" />
+      <workItem from="1682346585708" duration="1889000" />
     </task>
     <task id="LOCAL-00001" summary="2023-04-07&#10;- Added H2 Database Driver + Hibernate framework&#10;! Most of code is just for test whenever the project is configured properly - it will get cleaned up in next commit.">
       <created>1680891044617</created>
@@ -100,7 +118,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680983503759</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="2023-04-08&#10;- Bug fix: Scrapper not retriving all genres fields from site -&gt; change JSoup Element scrapping to plain html parsing.">
+      <created>1680987006165</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1680987006165</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -121,7 +146,8 @@
     <MESSAGE value="2023-04-07&#10;- Added H2 Database Driver + Hibernate framework&#10;! Most of code is just for test whenever the project is configured properly - it will get cleaned up in next commit." />
     <MESSAGE value="2023-04-08&#10;- Created Scrapping Methods For IMDB Movies along with classes that are required to store data." />
     <MESSAGE value="2023-04-08&#10;- Bug fix: with retrieval of languages, countries of origin retrieved only one position instead of all&#10;- Bug fix: In some cases the main cover was replaced with preview screenshot" />
-    <option name="LAST_COMMIT_MESSAGE" value="2023-04-08&#10;- Bug fix: with retrieval of languages, countries of origin retrieved only one position instead of all&#10;- Bug fix: In some cases the main cover was replaced with preview screenshot" />
+    <MESSAGE value="2023-04-08&#10;- Bug fix: Scrapper not retriving all genres fields from site -&gt; change JSoup Element scrapping to plain html parsing." />
+    <option name="LAST_COMMIT_MESSAGE" value="2023-04-08&#10;- Bug fix: Scrapper not retriving all genres fields from site -&gt; change JSoup Element scrapping to plain html parsing." />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

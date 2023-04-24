@@ -26,7 +26,6 @@ public class MovieDataExtractor implements Extractable {
         while(this.contentURL.toLowerCase().contains("?")) {
             this.contentURL = this.contentURL.substring(0, this.contentURL.indexOf("?"));
         }
-        System.out.println(this.contentURL);
     }
 
     public MovieData getRetrievedData() {
@@ -76,15 +75,14 @@ public class MovieDataExtractor implements Extractable {
      * @param document JSOUP Document containing html page from IMDB url link
      * @return List of persons mentioned on directors part of IMDB HTML page content
      */
-    private Set<Person> retrieveDirectors(Document document) {
+    private Set<String> retrieveDirectors(Document document) {
         final String DIRECTORS_ELEMENT_XPATH = "//*[@id=\"__next\"]/main/div/section[1]/section/div[3]/section/section/div[3]/div[2]/div[1]/section/div[2]/div/ul/li[1]/div/ul/li/a";
 
-        Set<Person> directorSet = new HashSet<>();
+        Set<String> directorSet = new HashSet<>();
         Elements elements = document.selectXpath(DIRECTORS_ELEMENT_XPATH);
         for(Element e : elements) {
-            System.out.println(e.ownText());
             // TODO: Extend person information about director (age, production count etc...)
-            directorSet.add(new Person(e.ownText()));
+            directorSet.add(e.ownText());
         }
         return directorSet;
     }
@@ -94,14 +92,14 @@ public class MovieDataExtractor implements Extractable {
      * @param document JSOUP Document containing html page from IMDB url link
      * @return List of persons mentioned on writers part of IMDB HTML page content
      */
-    private Set<Person> retrieveWriters(Document document) {
+    private Set<String> retrieveWriters(Document document) {
         final String WRITERS_ELEMENT_XPATH = "//*[@id=\"__next\"]/main/div/section[1]/section/div[3]/section/section/div[3]/div[2]/div[1]/section/div[2]/div/ul/li[2]/div/ul/li/a";
 
-        Set<Person> writerSet = new HashSet<>();
+        Set<String> writerSet = new HashSet<>();
         Elements elements = document.selectXpath(WRITERS_ELEMENT_XPATH);
         for(Element e : elements) {
             // TODO: Extend person information about writer (age, production count etc...)
-            writerSet.add(new Person(e.ownText()));
+            writerSet.add(e.ownText());
         }
         return writerSet;
     }
@@ -118,7 +116,6 @@ public class MovieDataExtractor implements Extractable {
         for(String s1 : s.split(",")) {
             if(s1.contains("\"id\":")) {
                 String tmp = s1.substring(s1.indexOf("\":\"")+3, s1.lastIndexOf("\""));
-                System.out.println(tmp);
                 genresSet.add(tmp);
             }
         }
@@ -150,7 +147,6 @@ public class MovieDataExtractor implements Extractable {
                 }
             }
             String retrievedURL = coverElement.attr("src");
-            System.out.println(retrievedURL);
             optionalCoverURL = Optional.of(retrievedURL);
         }
         return optionalCoverURL;
@@ -262,9 +258,9 @@ public class MovieDataExtractor implements Extractable {
         // Title Retrieval
         String retrievedTitle = retrieveTitleData(document);
         // Directors Retrieval
-        Set<Person> directors = retrieveDirectors(document);
+        Set<String> directors = retrieveDirectors(document);
         // Writers Retrieval
-        Set<Person> writers = retrieveWriters(document);
+        Set<String> writers = retrieveWriters(document);
         // Genres Retrieval
         Set<String> genres = retrieveGenres(document);
         // Cover URL Retrieval
@@ -277,11 +273,11 @@ public class MovieDataExtractor implements Extractable {
         Optional<String> runtimeOptional = retrieveRunTime(document);
         // Setting MovieData
         retrievedData.setTitle(retrievedTitle);
-        for(Person p : directors) {
-            retrievedData.addDirector(new Person(p.getName()));
+        for(String s : directors) {
+            retrievedData.addDirector(s);
         }
-        for(Person p : writers) {
-            retrievedData.addWriters(new Person(p.getName()));
+        for(String s : writers) {
+            retrievedData.addWriters(s);
         }
         for(String s : genres) {
             retrievedData.addGenre(s);
